@@ -1,20 +1,9 @@
--- Use SQL insert statements to add any
--- starting/dummy data to your database tables
-
--- EXAMPLE:
-
---  insert into "todos"
---    ("task", "isCompleted")
---    values
---      ('Learn to code', false),
---      ('Build projects', false),
---      ('Get a job', false);
 
 insert into "products" (
-  "title"
-  "desc"
-  "info"
-  "price"
+  "title",
+  "desc",
+  "info",
+  "price",
   "imageUrl"
 ) values (
   'Bridal Package',
@@ -22,18 +11,18 @@ insert into "products" (
 ',
 '[WEDDING, REHERSAL DINNER, WELCOME PARTY, BACHELORETTE, ENGAGEMENT PARTY, ENGAGEMENT PHOTOS, HONEYMOON]',
 1279,
-'/images/bridal.png'
+'/images/bridalpackagei.png'
 ), (
   'Black Tie & Party Package',
   'ARE YOU GOING TO A BLACK TIE WEDDING OR FORMAL EVENT AND DON''T KNOW WHERE TO START? YOU KNOW WHEN THE INVITE SAYS “BLACK TIE OPTIONAL”,
 IT DOESN''T RAELLY MEAN “OPTIONAL.” PERHAPS A BACHELLORETTE WEEKEND WITH MULTIPLE THEMED NIGHTS? A MILESTONE BIRTHDAY PARTY? GRAB YOUR ESPRESSO MARTINI, THIS PACKAGE IS FOR YOU!',
 '[BLACK TIE WEDDINGS, FORMAL EVENTS, AWARD SHOWS, MILESTONE BIRTHDAY PARTY, GALAS]',
 1279,
-'/images/blacktie.png'
+'/images/blacktiei.png'
 ), (
   'Vacation Package',
   'ARE YOU GOING TO LAKE COMO AND THEN LONDON WITH A MAN AND ARE TO IMPRESS HIM? DO YOU NEED OUTFITS THAT WILL TAKE YOU FROM SIGHTSEEING TO A SEXY DINNER ALL IN ONE DAY? A TROPICAL VACAY FOR A WEEK AND NOT TRYING TO PACK 45 OUTFITS? DID YOU MEET A MAN ON BUMBLE AND HE''S NOW FLYING YOU TO GREECE?
 ', '[EUROTRIP, TROPICAL VACAY, WORK TRIPS & CONFERENCES]',
 1279,
-'/images/vacation.png'
-)
+'/images/vacationi.png'
+);

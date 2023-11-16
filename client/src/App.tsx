@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
-import "./App.css";
 
-export default function App() {
+import { NavBar } from "./components/NavBar";
+import { HomePage } from "./components/HomePage";
+import { ProductCard } from "./components/ProductCard";
+
+export default function App({ icon }) {
   const [serverData, setServerData] = useState("");
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [selectMenuItem, setSelectedMenuItem] = useState("");
 
   useEffect(() => {
     async function readServerData() {
@@ -20,18 +25,10 @@ export default function App() {
 
   return (
     <>
-      <div>
-        <a
-          href="https://vitejs.dev"
-          target="_blank"
-          rel="noreferrer"
-          className="flex flex-col text-2xl font-thin text-green-200"
-        ></a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="bg-[#F5F5F5]">
+        <NavBar />
+        <HomePage />
       </div>
-      <h1>{serverData}</h1>
     </>
   );
 }
