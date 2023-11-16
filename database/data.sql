@@ -26,3 +26,11 @@ IT DOESN''T RAELLY MEAN “OPTIONAL.” PERHAPS A BACHELLORETTE WEEKEND WITH MUL
 1279,
 '/images/vacationi.png'
 );
+
+insert into "users"(
+  "email",
+  "password"
+) values (
+  'test@gmail.com',
+  'password12345'
+);
