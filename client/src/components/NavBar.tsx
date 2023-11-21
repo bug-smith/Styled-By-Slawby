@@ -16,7 +16,7 @@ export function NavBar() {
       <div className="flex items-center justify-between bg-black px-2 py-5 text-white">
         <FontAwesomeIcon
           icon={faBars}
-          className="h-5 w-5 pl-8 hover:cursor-pointer"
+          className={`h-5 w-5 pl-8 hover:cursor-pointer`}
           onClick={toggleDrawer}
         />
         <img src="/images/mobilelogo.png" className="h-16 md:hidden" />

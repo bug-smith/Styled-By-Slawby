@@ -4,6 +4,7 @@ import { NavBar } from "./components/NavBar";
 import { HomePage } from "./components/HomePage";
 import { SignInPage } from "./components/SignInPage";
 import { About } from "./components/About";
+import { Contact } from "./components/Contact";
 
 export default function App() {
   // const [serverData, setServerData] = useState("");
@@ -30,6 +31,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="sign-in" element={<SignInPage />}></Route>
         <Route path="about" element={<About />}></Route>
+        <Route path="contact" element={<Contact />}></Route>
       </Routes>
     </div>
   );
