@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Koho: ["KoHo", "sans-serif"],
+        Laqucer: ["Lacquer", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

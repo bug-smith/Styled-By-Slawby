@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-
+import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { HomePage } from "./components/HomePage";
+import { SignInPage } from "./components/SignInPage";
+import { About } from "./components/About";
 
 export default function App() {
   // const [serverData, setServerData] = useState("");
@@ -22,11 +24,13 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      <div className="bg-[#F5F5F5]">
-        <NavBar />
-        <HomePage />
-      </div>
-    </>
+    <div className="h-screen bg-[#D9D9D9]">
+      <NavBar />
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="sign-in" element={<SignInPage />}></Route>
+        <Route path="about" element={<About />}></Route>
+      </Routes>
+    </div>
   );
 }
