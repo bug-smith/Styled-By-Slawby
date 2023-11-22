@@ -28,7 +28,7 @@ export default function App() {
 
   console.log(`products`, products);
   return (
-    <div className="relative h-full">
+    <div className="relative h-screen">
       <video
         autoPlay
         loop
