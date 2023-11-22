@@ -28,7 +28,7 @@ export default function App() {
 
   console.log(`products`, products);
   return (
-    <div className="relative h-screen">
+    <div className="relative sticky h-screen object-cover sm:h-full sm:object-cover md:h-full md:object-cover lg:h-full lg:object-cover">
       <video
         autoPlay
         loop
