@@ -10,7 +10,7 @@ type Product = {
 };
 export function ProductDetails() {
   const { id } = useParams();
-  const [product, setProduct] = useState<Product>({});
+  const [product, setProduct] = useState<Product | null>(null);
   const [productList, setList] = useState<string[]>([]);
   // const [error, setError] = useState();
   useEffect(() => {
@@ -35,10 +35,8 @@ export function ProductDetails() {
     }
   }, [id]);
 
-  {
-    productList.map((item) => {
-      return <li key={item}>{item}</li>;
-    });
+  if (!product) {
+    return <div>Loading...</div>;
   }
 
   return (
