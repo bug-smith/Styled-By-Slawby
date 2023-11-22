@@ -1,3 +1,11 @@
+et client_min_messages to warning;
+
+-- DANGER: this is NOT how to do it in the real world.
+-- `drop schema` INSTANTLY ERASES EVERYTHING.
+drop schema "public" cascade;
+
+create schema "public";
+
 CREATE TABLE "users" (
   "userId" serial PRIMARY KEY,
   "email" text,
@@ -6,10 +14,10 @@ CREATE TABLE "users" (
 
 CREATE TABLE "products" (
   "productId" serial PRIMARY KEY,
-  "title" text NOT NULL,
-  "desc" text NOT NULL,
-  "info" text NOT NULL,
-  "price" integer NOT NULL,
+  "title" text,
+  "desc" text,
+  "info" text,
+  "price" integer,
   "imageUrl" text
 );
 

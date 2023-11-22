@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
 import { ClientError, errorMiddleware } from './lib/index.js';
+import { promises as fs } from 'fs';
 
 const connectionString =
   process.env.DATABASE_URL ||
@@ -25,10 +26,41 @@ app.use(express.static(reactStaticDir));
 app.use(express.static(uploadsStaticDir));
 app.use(express.json());
 
-app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello, World!' });
+app.get('/api/images', async (req, res) => {
+  try {
+    const imagesDir = `${uploadsStaticDir}/images`;
+    const files = await fs.readdir(imagesDir);
+    const images = files.map((file) => `images/${file}`);
+    res.json(images);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send('cant retrieve');
+  }
 });
 
+app.get('/api/products', async (req, res) => {
+  try {
+    const sql = `select * from "products"`;
+    const results = await db.query(sql);
+    res.json(results.rows);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send('cant retrieve');
+  }
+});
+
+app.get('/api/products/:productId', async (req, res) => {
+  try {
+    const productId = Number(req.params.productId);
+    const sql = 'select * from "products" where "productId" = $1';
+    const params = [productId];
+    const result = await db.query(sql, params);
+    const product = result.rows[0];
+    res.json(product);
+  } catch (e) {
+    console.error(e);
+  }
+});
 /**
  * Serves React's index.html if no api route matches.
  *

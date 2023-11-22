@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         Koho: ["KoHo", "sans-serif"],
-        Laqucer: ["Lacquer", "sans-serif"],
+        Aleg: ["Alegreya", "sans-serif"],
       },
     },
   },

@@ -1,15 +1,15 @@
 export function About() {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#D9D9D9] pb-5 pt-5">
-      <div className="mb-5 flex w-[93%] justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-2 font-Laqucer text-white drop-shadow-2xl">
+    <div className="flex flex-col items-center justify-center pb-5 pt-5">
+      <div className="font-Aleg-300 mb-5 flex w-[93%] justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-5 text-lg text-white drop-shadow-2xl">
         <p>about me</p>
       </div>
       <div className="flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
         <p className="pb-3">Lauren "Slawby" Zaslav</p>
         <img src="/images/about.png" />
       </div>
-      <div className="mt-5 flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
-        <p>
+      <div className="font-Aleg-300 mt-5 flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-5 text-xl lowercase text-white drop-shadow-2xl">
+        <p className="rounded-lg border-2 p-3 px-3">
           Hi, I'm Lauren! Ever since I can remember, I've been obsessed with
           fashion. My mom was a fashion queen! She showed me the importance of
           always looking put together, and that with the perfect shoes and
