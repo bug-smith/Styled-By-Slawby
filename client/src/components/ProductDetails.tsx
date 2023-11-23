@@ -40,7 +40,7 @@ export function ProductDetails() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center pb-5 pt-5">
+    <div className="flex min-h-screen flex-col items-center justify-center pb-5 pt-5">
       <div className="flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
         <p className="lowercase">{product.title}</p>
         <div className="mt-5">
