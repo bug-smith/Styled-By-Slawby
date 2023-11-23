@@ -22,7 +22,7 @@ export function SignUpPage() {
 
   return (
     <Link path="/sign-up">
-      <div className="flex flex-col items-center justify-center pb-5 pt-5">
+      <div className="flex h-screen flex-col items-center justify-start pb-5 pt-5">
         <div className="font-Aleg-300 mb-5 flex w-[93%] justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-5 text-white drop-shadow-2xl">
           <p>sign up</p>
         </div>
