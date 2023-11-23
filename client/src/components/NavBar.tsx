@@ -13,7 +13,7 @@ export function NavBar() {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-black px-2 py-5 text-white">
+      <div className="flex items-center justify-between bg-transparent px-2 py-5 text-white">
         <FontAwesomeIcon
           icon={faBars}
           className={`h-5 w-5 pl-8 hover:cursor-pointer`}
