@@ -30,6 +30,7 @@ export default function App() {
   return (
     <div className="relative sticky h-screen object-cover sm:h-full sm:object-cover md:h-full md:object-cover lg:h-full lg:object-cover">
       <video
+        playsInline
         autoPlay
         loop
         muted
