@@ -30,7 +30,7 @@ export function HomePage() {
       <div className="flex justify-center pb-5">
         <img
           src="/images/hero.png"
-          className="w-[97%] rounded-xl shadow-lg shadow-[#000] drop-shadow-2xl"
+          className="w-[97%] rounded-xl border shadow-lg shadow-[#000] drop-shadow-2xl"
         />
       </div>
       {packageItems.map((item) => (
