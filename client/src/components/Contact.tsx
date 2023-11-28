@@ -5,7 +5,10 @@ export function Contact() {
         <p>contact me</p>
       </div>
       <div className="mb-5 flex h-80 w-[93%] justify-center rounded-xl border-2 border-white bg-black bg-black pb-5 pl-5 pr-5 pt-2 font-Koho text-white drop-shadow-2xl">
-        <form className="mr-11 flex flex-col items-center justify-around">
+        <form
+          className="mr-11 flex flex-col items-center justify-around"
+          action="mailto:salttyyy@gmail.com"
+        >
           <div>
             <label className="ml-7 pr-5">name</label>
             <input className="rounded-lg text-black" />
@@ -22,7 +25,10 @@ export function Contact() {
               cols={15}
             ></textarea>
           </div>
-          <button className="ml-20 h-7 w-1/3 rounded-lg border border-white bg-[#D9D9D9] font-Koho text-black">
+          <button
+            className="ml-20 h-7 w-1/3 rounded-lg border border-white bg-[#D9D9D9] font-Koho text-black"
+            type="submit"
+          >
             send
           </button>
         </form>

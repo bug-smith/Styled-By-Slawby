@@ -1,4 +1,4 @@
-et client_min_messages to warning;
+set client_min_messages to warning;
 
 -- DANGER: this is NOT how to do it in the real world.
 -- `drop schema` INSTANTLY ERASES EVERYTHING.
@@ -9,7 +9,7 @@ create schema "public";
 CREATE TABLE "users" (
   "userId" serial PRIMARY KEY,
   "email" text,
-  "password" text
+  "hashedPassword" text
 );
 
 CREATE TABLE "products" (
