@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { ProductDetails } from "./components/ProductDetails";
 import SignUpPage from "./components/SignUpPage";
+import { Cart } from "./components/Cart";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,6 +15,7 @@ export default function App() {
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
   // const [selectMenuItem, setSelectedMenuItem] = useState("");
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     async function loadProducts() {
       try {
@@ -24,10 +26,10 @@ export default function App() {
         console.error(e);
       }
     }
+    setCartItems(cartItems);
     loadProducts();
-  }, []);
-
-  console.log(`products`, products);
+  }, [cartItems]);
+  console.log(products);
   return (
     <div className="relative sticky min-h-screen object-cover sm:h-full sm:object-cover md:h-full md:object-cover lg:h-full lg:object-cover">
       <video
@@ -39,7 +41,7 @@ export default function App() {
         className="absolute h-full w-full object-cover"
         style={{ zIndex: -1 }}
       >
-        <source src="/images/background.mp4" type="video/mp4"></source>
+        <source src="/images/PoolReflection.mp4" type="video/mp4"></source>
       </video>
       <div className="relative z-30">
         <NavBar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
@@ -53,8 +55,12 @@ export default function App() {
           ></Route>
           <Route path="about" element={<About />}></Route>
           <Route path="contact" element={<Contact />}></Route>
-          <Route path="/product/:id" element={<ProductDetails />}></Route>
-          <Route path="/sign-up" element={<SignUpPage />}></Route>
+          <Route
+            path="/product/:id"
+            element={<ProductDetails setCartItems={setCartItems} />}
+          ></Route>
+          <Route path="sign-up" element={<SignUpPage />}></Route>
+          <Route path="cart" element={<Cart cartItems={cartItems} />}></Route>
         </Routes>
       </div>
     </div>

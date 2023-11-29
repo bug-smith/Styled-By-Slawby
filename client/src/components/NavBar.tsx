@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function NavBar({ setIsLoggedIn, isLoggedIn }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -22,6 +23,10 @@ export function NavBar({ setIsLoggedIn, isLoggedIn }) {
     setIsLoggedIn(false);
   }
 
+  function handleCartClick() {
+    navigate("/cart");
+  }
+
   return (
     <>
       {isLoggedIn && (
@@ -37,11 +42,20 @@ export function NavBar({ setIsLoggedIn, isLoggedIn }) {
           className={`h-5 w-5 pl-8 hover:cursor-pointer`}
           onClick={toggleDrawer}
         />
-        <img src="/images/mobilelogo.png" className="h-16 md:hidden" />
-        <img src="/images/desktoplogo.png" className="hidden md:block" />
+        <img
+          src="/images/mobilelogo.png"
+          className="h-16 md:hidden"
+          onClick={() => navigate("/")}
+        />
+        <img
+          src="/images/desktoplogo.png"
+          className="hidden md:block"
+          onClick={() => navigate("/")}
+        />
         <FontAwesomeIcon
           icon={faCartShopping}
           className="h-5 w-5 pr-8 hover:cursor-pointer"
+          onClick={handleCartClick}
         />
       </div>
       <div

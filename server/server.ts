@@ -2,11 +2,13 @@
 import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
-import { ClientError, errorMiddleware } from './lib/index.js';
+import { ClientError, authMiddleware, errorMiddleware } from './lib/index.js';
 import { promises as fs } from 'fs';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import { nextTick } from 'process';
+import { check } from 'prettier';
+import { get } from 'http';
 
 // type User = {
 //   email: string;
@@ -127,6 +129,47 @@ app.post('/api/sign-in', async (req, res, next) => {
     res.json({ token, user: payload });
   } catch (e) {
     next(e);
+  }
+});
+
+app.post('/api/add-to-cart', authMiddleware, async (req, res, next) => {
+  try {
+    const { productId } = req.body;
+    const userId = req.user?.userId;
+    if (!userId) {
+      return res.status(500).json({ error: 'userId not found' });
+    }
+    const checkcartSql = `select * from "carts" where "userId" = $1`;
+    const cartCheckResult = await db.query(checkcartSql, [userId]);
+    if (cartCheckResult.rowCount === 0) {
+      const createCartSql = `insert into "carts" ("userId") values ($1) returning *`;
+      const createCartResult = await db.query(createCartSql, [userId]);
+      if (createCartResult.rowCount === 0) {
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+    }
+    const cartInsert = `insert into "cartItems" ("cartId", "productId", "quantity")
+    select "cartId", $2, 1
+    from "carts"
+    where "userId" = $1
+    returning *;
+    `;
+    const result = await db.query(cartInsert, [userId, productId]);
+    const cart = result.rows[0];
+    const readProduct = `select "productId",
+                        "title",
+                        "desc",
+                        "info",
+                        "price",
+                        "imageUrl"
+                        from "products"
+                        where "productId" = $1`;
+    const productResult = await db.query(readProduct, [productId]);
+    res
+      .status(201)
+      .json({ ...productResult.rows[0], productId: cart.productId });
+  } catch (e) {
+    console.error(e);
   }
 });
 /**

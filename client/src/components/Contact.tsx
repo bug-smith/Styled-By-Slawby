@@ -1,10 +1,23 @@
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa6";
+
 export function Contact() {
+  const navigate = useNavigate();
+  function handleArrowClick() {
+    navigate("/");
+  }
   return (
     <div className="flex min-h-screen flex-col items-center justify-start pb-5 pt-5">
-      <div className="font-Aleg-300 mb-5 flex w-[93%] justify-center rounded-xl border-2 border-white bg-black pb-5 pl-5 pr-5 pt-5 text-white drop-shadow-2xl">
-        <p>contact me</p>
+      <div className="font-Aleg-300 mb-5 flex w-[93%] items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 text-white drop-shadow-2xl">
+        <div className="mr-auto">
+          <FaArrowLeft
+            onClick={handleArrowClick}
+            className="hover:cursor-pointer"
+          />
+        </div>
+        <p className="flex-grow text-center">contact me</p>
       </div>
-      <div className="mb-5 flex h-80 w-[93%] justify-center rounded-xl border-2 border-white bg-black bg-black pb-5 pl-5 pr-5 pt-2 font-Koho text-white drop-shadow-2xl">
+      <div className="mb-5 flex h-80 w-[93%] justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-2 font-Koho text-white drop-shadow-2xl">
         <form
           className="mr-11 flex flex-col items-center justify-around"
           action="mailto:salttyyy@gmail.com"
@@ -26,7 +39,7 @@ export function Contact() {
             ></textarea>
           </div>
           <button
-            className="ml-20 h-7 w-1/3 rounded-lg border border-white bg-[#D9D9D9] font-Koho text-black"
+            className="ml-20 h-7 w-1/3 rounded-lg border border-white bg-[#D9D9D9] font-Koho text-white transition duration-500 ease-in-out hover:bg-[#518058]"
             type="submit"
           >
             send
