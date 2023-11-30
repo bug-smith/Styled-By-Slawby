@@ -73,7 +73,13 @@ export default function App() {
           <Route path="sign-up" element={<SignUpPage />}></Route>
           <Route
             path="cart"
-            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+            element={
+              <Cart
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                isLoggedIn={isLoggedIn}
+              />
+            }
           ></Route>
         </Routes>
       </div>

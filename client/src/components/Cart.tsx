@@ -2,14 +2,26 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { CartItems } from "./CartItems";
 import { useNavigate } from "react-router-dom";
 
-export function Cart({ cartItems, setCartItems }) {
+export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   const navigate = useNavigate();
+
   function handleArrowClick() {
     navigate("/");
   }
   const calculateTotalPrice = () => {
     return cartItems?.reduce((total, item) => total + item.price, 0);
   };
+
+  if (!isLoggedIn) {
+    return (
+      <div className="flex flex-col items-center justify-center text-white">
+        <p className="mb-5 text-xl"> Please log in to see cart</p>
+        <p>Please click the arrow below to login</p>
+        <FaArrowLeft onClick={() => navigate("/sign-in")} />
+      </div>
+    );
+  }
+
   const totalPrice = calculateTotalPrice();
   console.log(cartItems);
   return (
