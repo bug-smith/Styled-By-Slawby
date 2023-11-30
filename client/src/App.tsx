@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact";
 import { ProductDetails } from "./components/ProductDetails";
 import SignUpPage from "./components/SignUpPage";
 import { Cart } from "./components/Cart";
+import { CheckOut } from "./components/CheckOut";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -81,6 +82,7 @@ export default function App() {
               />
             }
           ></Route>
+          <Route path="check-out" element={<CheckOut />}></Route>
         </Routes>
       </div>
     </div>
