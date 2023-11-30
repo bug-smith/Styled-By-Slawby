@@ -14,7 +14,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
 
   if (!isLoggedIn) {
     return (
-      <div className="flex flex-col items-center justify-center text-white">
+      <div className="flex flex-col items-center justify-center text-white hover:cursor-pointer">
         <p className="mb-5 text-xl"> Please log in to see cart</p>
         <p>Please click the arrow below to login</p>
         <FaArrowLeft onClick={() => navigate("/sign-in")} />
