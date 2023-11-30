@@ -169,7 +169,25 @@ app.post('/api/add-to-cart', authMiddleware, async (req, res, next) => {
       .status(201)
       .json({ ...productResult.rows[0], productId: cart.productId });
   } catch (e) {
-    console.error(e);
+    next(e);
+  }
+});
+app.post('/api/cart', authMiddleware, async (req, res, next) => {
+  try {
+    const userId = req.user?.userId;
+    console.log('running');
+    console.log(req.user);
+    if (!userId) {
+      throw new Error('User ID doesnt exist');
+    }
+    const sql = `select * from "cartItems"
+                  join "carts" using ("cartId")
+                  join "products" using ("productId")
+                  where "userId" = $1`;
+    const result = await db.query(sql, [userId]);
+    res.json(result.rows);
+  } catch (e) {
+    next(e);
   }
 });
 /**

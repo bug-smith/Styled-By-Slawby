@@ -14,22 +14,28 @@ export default function App() {
   // const [serverData, setServerData] = useState("");
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
   // const [selectMenuItem, setSelectedMenuItem] = useState("");
-  const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     async function loadProducts() {
+      const token = localStorage.getItem("token");
       try {
-        const response = await fetch("/api/products");
-        const products = await response.json();
-        setProducts(products);
+        const response = await fetch("/api/cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const cartItems = await response.json();
+        console.log(cartItems);
+        setCartItems(cartItems);
       } catch (e) {
         console.error(e);
       }
     }
-    setCartItems(cartItems);
     loadProducts();
-  }, [cartItems]);
-  console.log(products);
+  }, []);
+
   return (
     <div className="relative sticky min-h-screen object-cover sm:h-full sm:object-cover md:h-full md:object-cover lg:h-full lg:object-cover">
       <video
@@ -57,7 +63,12 @@ export default function App() {
           <Route path="contact" element={<Contact />}></Route>
           <Route
             path="/product/:id"
-            element={<ProductDetails setCartItems={setCartItems} />}
+            element={
+              <ProductDetails
+                setCartItems={setCartItems}
+                cartItems={cartItems}
+              />
+            }
           ></Route>
           <Route path="sign-up" element={<SignUpPage />}></Route>
           <Route path="cart" element={<Cart cartItems={cartItems} />}></Route>

@@ -9,12 +9,11 @@ type Product = {
   productId: number;
   title: string;
 };
-export function ProductDetails({ setCartItems }) {
+export function ProductDetails({ setCartItems, cartItems }) {
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
   const [productList, setList] = useState<string[]>([]);
   const navigate = useNavigate();
-  // const [error, setError] = useState();
   useEffect(() => {
     async function readProduct(productId) {
       try {
@@ -41,6 +40,15 @@ export function ProductDetails({ setCartItems }) {
     const token = localStorage.getItem("token");
     const userId = token ? parseInt(token, 10) : null;
     const productId = product?.productId;
+    const isProductInCart = cartItems.some(
+      (item) => item.productId === productId,
+    );
+
+    if (isProductInCart) {
+      alert("Product is already in your cart, please view your cart");
+      return;
+    }
+
     try {
       const res = await fetch("/api/add-to-cart", {
         method: "POST",
@@ -60,6 +68,7 @@ export function ProductDetails({ setCartItems }) {
       console.error(e);
     }
   }
+
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -69,8 +78,8 @@ export function ProductDetails({ setCartItems }) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center pb-5 pt-5">
-      <div className="flex flex w-[93%] flex-col items-center items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
-        <div className="mt-2 flex items-center">
+      <div className="flex flex w-[93%] flex-col items-center items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5  pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
+        <div className="mt-2 flex items-center pr-3">
           <div className="mr-3">
             <FaArrowLeft
               onClick={handleArrowClick}
