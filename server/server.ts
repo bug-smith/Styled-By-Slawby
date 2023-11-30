@@ -175,8 +175,6 @@ app.post('/api/add-to-cart', authMiddleware, async (req, res, next) => {
 app.post('/api/cart', authMiddleware, async (req, res, next) => {
   try {
     const userId = req.user?.userId;
-    console.log('running');
-    console.log(req.user);
     if (!userId) {
       throw new Error('User ID doesnt exist');
     }
@@ -190,6 +188,24 @@ app.post('/api/cart', authMiddleware, async (req, res, next) => {
     next(e);
   }
 });
+
+app.delete(
+  '/api/cart-delete/:productId',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const { productId } = req.params;
+      if (!productId) {
+        throw new Error('Product does not exist');
+      }
+      const deleteSql = `delete from "cartItems" where "productId" = $1 returning *`;
+      await db.query(deleteSql, [productId]);
+      res.status(200).json({ message: 'item has been removed from cart' });
+    } catch (e) {
+      next(e);
+    }
+  },
+);
 /**
  * Serves React's index.html if no api route matches.
  *

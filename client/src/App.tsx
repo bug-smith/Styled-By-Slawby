@@ -71,7 +71,10 @@ export default function App() {
             }
           ></Route>
           <Route path="sign-up" element={<SignUpPage />}></Route>
-          <Route path="cart" element={<Cart cartItems={cartItems} />}></Route>
+          <Route
+            path="cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          ></Route>
         </Routes>
       </div>
     </div>
