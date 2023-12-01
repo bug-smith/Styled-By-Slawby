@@ -78,7 +78,7 @@ export function ProductDetails({ setCartItems, cartItems }) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center pb-5 pt-5">
-      <div className="flex flex w-[93%] flex-col items-center items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5  pr-5 pt-2 font-Koho text-xl text-white drop-shadow-2xl">
+      <div className="flex flex w-[93%] flex-col items-center items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5  pr-5 pt-2 font-Koho text-xl text-white shadow-lg drop-shadow-2xl">
         <div className="mt-2 flex items-center pr-3">
           <div className="mr-3">
             <FaArrowLeft
@@ -96,7 +96,7 @@ export function ProductDetails({ setCartItems, cartItems }) {
           />
         </div>
       </div>
-      <div className="mt-5 flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 font-Koho text-sm text-white drop-shadow-2xl">
+      <div className="mt-5 flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 font-Koho text-sm text-white shadow-lg drop-shadow-2xl">
         <p className="rounded-lg border-2 p-3 px-3">{product.desc}</p>
         <ul className="mt-5 list-inside list-disc rounded-lg border-2 p-5">
           {productList.map((item) => {
@@ -104,7 +104,7 @@ export function ProductDetails({ setCartItems, cartItems }) {
           })}
         </ul>
       </div>
-      <div className="mt-5 flex flex w-[93%] items-center justify-around rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 font-Koho text-sm text-white drop-shadow-2xl">
+      <div className="mt-5 flex flex w-[93%] items-center justify-around rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 font-Koho text-sm text-white shadow-lg drop-shadow-2xl">
         <p>price: ${product.price}.00</p>
         <button
           className="ml-5 h-7 w-1/3 rounded-lg border border-white bg-[#D9D9D9] font-Koho text-black transition duration-500 ease-in-out hover:bg-[#518058]"

@@ -8,7 +8,7 @@ export function Contact() {
   }
   return (
     <div className="flex min-h-screen flex-col items-center justify-start pb-5 pt-5">
-      <div className="font-Aleg-300 mb-5 flex w-[93%] items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 text-white drop-shadow-2xl">
+      <div className="font-Aleg-300 mb-5 flex w-[93%] items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 text-white shadow-lg drop-shadow-2xl">
         <div className="mr-auto">
           <FaArrowLeft
             onClick={handleArrowClick}
@@ -17,7 +17,7 @@ export function Contact() {
         </div>
         <p className="flex-grow text-center">contact me</p>
       </div>
-      <div className="mb-5 flex h-80 w-[93%] justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-2 font-Koho text-white drop-shadow-2xl">
+      <div className="mb-5 flex h-80 w-[93%] justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-2 font-Koho text-white shadow-lg drop-shadow-2xl">
         <form
           className="mr-11 flex flex-col items-center justify-around"
           action="mailto:salttyyy@gmail.com"
