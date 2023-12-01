@@ -1,9 +1,30 @@
 import { FaArrowLeft } from "react-icons/fa6";
 import { CartItems } from "./CartItems";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   const navigate = useNavigate();
+  useEffect(() => {
+    async function loadProducts() {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await fetch("/api/cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const cartItems = await response.json();
+        console.log(cartItems);
+        setCartItems(cartItems);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    loadProducts();
+  }, []);
 
   function handleArrowClick() {
     navigate("/");

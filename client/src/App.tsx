@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { HomePage } from "./components/HomePage";
@@ -16,26 +16,6 @@ export default function App() {
   // const [menuIsOpen, setMenuIsOpen] = useState(false);
   // const [selectMenuItem, setSelectedMenuItem] = useState("");
   const [cartItems, setCartItems] = useState([]);
-  useEffect(() => {
-    async function loadProducts() {
-      const token = localStorage.getItem("token");
-      try {
-        const response = await fetch("/api/cart", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const cartItems = await response.json();
-        console.log(cartItems);
-        setCartItems(cartItems);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    loadProducts();
-  }, []);
 
   return (
     <div className="relative sticky min-h-screen object-cover sm:h-full sm:object-cover md:h-full md:object-cover lg:h-full lg:object-cover">

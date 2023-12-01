@@ -24,7 +24,7 @@ export function NavBar({ setIsLoggedIn, isLoggedIn }) {
   }
 
   function handleCartClick() {
-    navigate("/cart");
+    return navigate("/cart");
   }
 
   return (

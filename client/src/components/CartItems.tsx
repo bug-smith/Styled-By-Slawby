@@ -36,7 +36,10 @@ export function CartItems({ cartItems, setCartItems }) {
           />
           <p className="mb-2 pl-2 text-xs">price: ${item.price}</p>
           <div className="mb-3 flex justify-center">
-            <FaRegTrashCan onClick={() => handleDelete(item.productId)} />
+            <FaRegTrashCan
+              onClick={() => handleDelete(item.productId)}
+              className="hover:cursor-pointer"
+            />
           </div>
         </div>
       ))}
