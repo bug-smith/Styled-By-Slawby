@@ -24,7 +24,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
       }
     }
     loadProducts();
-  }, []);
+  }, [setCartItems]);
 
   function handleArrowClick() {
     navigate("/");
