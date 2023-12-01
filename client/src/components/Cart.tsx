@@ -37,7 +37,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
     return (
       <div className="flex flex-col items-center justify-center font-Koho uppercase text-white hover:cursor-pointer">
         <p className="mb-5"> Please log in to see cart</p>
-        <p className="text-sm">Please click the arrow below to login</p>
+        <p className="mb-5 text-sm">Please click the arrow below to login</p>
         <FaArrowLeft onClick={() => navigate("/sign-in")} />
       </div>
     );
