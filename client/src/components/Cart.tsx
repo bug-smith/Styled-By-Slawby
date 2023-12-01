@@ -17,7 +17,6 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
           },
         });
         const cartItems = await response.json();
-        console.log(cartItems);
         setCartItems(cartItems);
       } catch (e) {
         console.error(e);
@@ -30,7 +29,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
     navigate("/");
   }
   const calculateTotalPrice = () => {
-    return cartItems?.reduce((total, item) => total + item.price, 0);
+    return cartItems.reduce((total, item) => total + item.price, 0);
   };
 
   if (!isLoggedIn) {
