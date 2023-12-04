@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   const navigate = useNavigate();
+
   useEffect(() => {
     async function loadProducts() {
       const token = localStorage.getItem("token");
@@ -28,8 +29,10 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   function handleArrowClick() {
     navigate("/");
   }
+
   const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
+    const value = cartItems.reduce((total, item) => total + item.price, 0);
+    return value;
   };
 
   if (!isLoggedIn) {
@@ -43,7 +46,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   }
 
   const totalPrice = calculateTotalPrice();
-  console.log(cartItems);
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-start pb-5 pt-5">
       <div className=" flex w-[93%] items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 font-Aleg text-lg text-white shadow-lg drop-shadow-2xl">
