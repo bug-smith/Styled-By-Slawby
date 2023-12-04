@@ -31,7 +31,11 @@ export default function App() {
         <source src="/images/PoolReflection.mp4" type="video/mp4"></source>
       </video>
       <div className="relative z-30">
-        <NavBar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+        <NavBar
+          setIsLoggedIn={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
+          cartItems={cartItems}
+        />
       </div>
       <div className="relative z-20">
         <Routes>

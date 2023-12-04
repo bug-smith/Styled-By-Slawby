@@ -23,6 +23,7 @@ export function SignInPage({ setIsLoggedIn }) {
       }
       const { token } = await res.json();
       localStorage.setItem("token", token);
+      alert("Sign in successful");
       setIsLoggedIn(true);
       navigate("/");
     } catch (e) {

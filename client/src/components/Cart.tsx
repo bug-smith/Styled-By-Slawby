@@ -31,8 +31,10 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
   }
 
   const calculateTotalPrice = () => {
-    const value = cartItems.reduce((total, item) => total + item.price, 0);
-    return value;
+    if (!Array.isArray(cartItems)) {
+      return 0;
+    }
+    return cartItems.reduce((total, item) => total + item.price, 0);
   };
 
   if (!isLoggedIn) {

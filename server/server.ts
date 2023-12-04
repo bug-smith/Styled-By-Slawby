@@ -126,7 +126,7 @@ app.post('/api/sign-in', async (req, res, next) => {
     }
     const payload = { userId, email };
     const token = jwt.sign(payload, hashKey);
-    res.json({ token, user: payload });
+    res.status(201).json({ token, user: payload });
   } catch (e) {
     next(e);
   }

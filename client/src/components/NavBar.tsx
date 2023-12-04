@@ -3,7 +3,7 @@ import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export function NavBar({ setIsLoggedIn, isLoggedIn }) {
+export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -54,9 +54,14 @@ export function NavBar({ setIsLoggedIn, isLoggedIn }) {
         />
         <FontAwesomeIcon
           icon={faCartShopping}
-          className="h-5 w-5 pr-8 hover:cursor-pointer"
+          className="relative h-5 w-5 pr-8 hover:cursor-pointer"
           onClick={handleCartClick}
         />
+        {cartItems.length > 0 && (
+          <span className="absolute right-[2rem] top-[2.6rem] block h-4 w-4 rounded-full bg-red-500 text-center text-xs leading-4 leading-6 text-white opacity-90">
+            {cartItems.length}
+          </span>
+        )}
       </div>
       <div
         className={`transisition-opacity fixed inset-0 z-40 bg-black bg-opacity-75 duration-300 ${
