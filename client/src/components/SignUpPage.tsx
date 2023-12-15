@@ -24,9 +24,7 @@ export function SignUpPage() {
         }
         throw new Error(`fetch failed ${res.status}`);
       }
-      console.log(userData);
-      const user = await res.json();
-      console.log(`registered ${user}`);
+      await res.json();
       navigate("/sign-in");
     } catch (e) {
       console.error(e);
