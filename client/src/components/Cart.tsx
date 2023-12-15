@@ -30,6 +30,17 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
     navigate("/");
   }
 
+  function handleCheckOut() {
+    if (cartItems.length > 0) {
+      navigate("/check-out");
+    } else {
+      alert("please add an item to your cart before checking-out");
+      return;
+    }
+  }
+
+  console.log(cartItems);
+
   const calculateTotalPrice = () => {
     if (!Array.isArray(cartItems)) {
       return 0;
@@ -67,14 +78,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
         <div className="flex justify-center">
           <button
             className="ml-5 flex h-7 w-1/3 items-center justify-center rounded-lg border border-white bg-[#D9D9D9] font-Koho text-white transition duration-500 ease-in-out hover:bg-[#518058]"
-            onClick={() => {
-              if (cartItems > 0) {
-                navigate("/check-out");
-              } else {
-                alert("please add items to the cart before checking-out");
-                return;
-              }
-            }}
+            onClick={handleCheckOut}
           >
             check-out
           </button>
