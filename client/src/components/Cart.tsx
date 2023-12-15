@@ -39,8 +39,6 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
     }
   }
 
-  console.log(cartItems);
-
   const calculateTotalPrice = () => {
     if (!Array.isArray(cartItems)) {
       return 0;
