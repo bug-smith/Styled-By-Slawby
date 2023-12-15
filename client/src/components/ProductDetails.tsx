@@ -47,7 +47,9 @@ export function ProductDetails({ setCartItems, cartItems, isLoggedIn }) {
       alert("Product is already in your cart, please view your cart");
       return;
     }
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
+      alert("Please sign in to add this item to the cart");
+    } else
       try {
         const res = await fetch("/api/add-to-cart", {
           method: "POST",
@@ -66,10 +68,6 @@ export function ProductDetails({ setCartItems, cartItems, isLoggedIn }) {
       } catch (e) {
         console.error(e);
       }
-    }
-    if (!isLoggedIn) {
-      alert("Please sign in to add this item to the cart");
-    }
   }
 
   if (!product) {
