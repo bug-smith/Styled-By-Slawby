@@ -8,7 +8,7 @@ export function Cart({ cartItems, setCartItems, isLoggedIn }) {
 
   useEffect(() => {
     async function loadProducts() {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
       try {
         const response = await fetch("/api/cart", {
           method: "POST",

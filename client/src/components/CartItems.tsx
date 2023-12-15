@@ -2,7 +2,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 
 export function CartItems({ cartItems, setCartItems }) {
   async function handleDelete(productId) {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     try {
       const response = await fetch(`/api/cart-delete/${productId}`, {
         method: "DELETE",

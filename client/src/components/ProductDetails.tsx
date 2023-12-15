@@ -37,7 +37,7 @@ export function ProductDetails({ setCartItems, cartItems, isLoggedIn }) {
   }, [id]);
 
   async function addToCart() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     const userId = token ? parseInt(token, 10) : null;
     const productId = product?.productId;
     const isProductInCart = cartItems.some(

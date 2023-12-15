@@ -22,7 +22,7 @@ export function SignInPage({ setIsLoggedIn }) {
         throw new Error(`fetch request failed ${res.status}`);
       }
       const { token } = await res.json();
-      localStorage.setItem("token", token);
+      sessionStorage.setItem("token", token);
       alert("Sign in successful");
       setIsLoggedIn(true);
       navigate("/");
@@ -32,7 +32,7 @@ export function SignInPage({ setIsLoggedIn }) {
   }
 
   function handleSignIn() {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       alert("you are already signed in");
       return;
     } else {

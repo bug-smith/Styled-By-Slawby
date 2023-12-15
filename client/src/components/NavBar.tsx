@@ -8,7 +8,7 @@ export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems, setCartItems }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, [setIsLoggedIn]);
 
@@ -19,7 +19,7 @@ export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems, setCartItems }) {
   const closeDrawer = () => setIsDrawerOpen(false);
 
   function handleSignOutClick() {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     setIsLoggedIn(false);
     setCartItems([]);
   }
