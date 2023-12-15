@@ -9,7 +9,7 @@ type Product = {
   productId: number;
   title: string;
 };
-export function ProductDetails({ setCartItems, cartItems }) {
+export function ProductDetails({ setCartItems, cartItems, isLoggedIn }) {
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
   const [productList, setList] = useState<string[]>([]);
@@ -43,29 +43,32 @@ export function ProductDetails({ setCartItems, cartItems }) {
     const isProductInCart = cartItems.some(
       (item) => item.productId === productId,
     );
-
     if (isProductInCart) {
       alert("Product is already in your cart, please view your cart");
       return;
     }
-
-    try {
-      const res = await fetch("/api/add-to-cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ userId, productId }),
-      });
-      if (!res.ok) {
-        throw new Error("failed to add product to cart");
+    if (isLoggedIn) {
+      try {
+        const res = await fetch("/api/add-to-cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userId, productId }),
+        });
+        if (!res.ok) {
+          throw new Error("failed to add product to cart");
+        }
+        const result = await res.json();
+        setCartItems((currentItems) => [...currentItems, result]);
+        alert(`Added ${result.title} to cart`);
+      } catch (e) {
+        console.error(e);
       }
-      const result = await res.json();
-      setCartItems((currentItems) => [...currentItems, result]);
-      alert(`Added ${result.title} to cart`);
-    } catch (e) {
-      console.error(e);
+    }
+    if (!isLoggedIn) {
+      alert("Please sign in to add this item to the cart");
     }
   }
 

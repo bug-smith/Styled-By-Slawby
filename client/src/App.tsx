@@ -35,6 +35,7 @@ export default function App() {
           setIsLoggedIn={setIsLoggedIn}
           isLoggedIn={isLoggedIn}
           cartItems={cartItems}
+          setCartItems={setCartItems}
         />
       </div>
       <div className="relative z-20">
@@ -52,6 +53,7 @@ export default function App() {
               <ProductDetails
                 setCartItems={setCartItems}
                 cartItems={cartItems}
+                isLoggedIn={isLoggedIn}
               />
             }
           ></Route>

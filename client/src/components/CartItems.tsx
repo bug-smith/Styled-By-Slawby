@@ -24,7 +24,7 @@ export function CartItems({ cartItems, setCartItems }) {
   }
   return (
     <div className="font-Aleg-300 mt-5 flex flex w-[93%] flex-col items-center justify-center rounded-xl border-2 border-white bg-[#8dccdd] pb-5 pl-5 pr-5 pt-5 text-xl lowercase text-white shadow-lg drop-shadow-2xl">
-      {cartItems.map((item, index) => (
+      {cartItems?.map((item, index) => (
         <div
           key={index}
           className="mb-5 min-w-full rounded-lg border border-white !opacity-100 drop-shadow-2xl"

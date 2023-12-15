@@ -3,7 +3,7 @@ import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems }) {
+export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems, setCartItems }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems }) {
   function handleSignOutClick() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setCartItems([]);
   }
 
   function handleCartClick() {
@@ -58,7 +59,7 @@ export function NavBar({ setIsLoggedIn, isLoggedIn, cartItems }) {
           onClick={handleCartClick}
         />
         {cartItems.length > 0 && (
-          <span className="absolute right-[2rem] top-[2.6rem] block h-4 w-4 rounded-full bg-red-500 text-center text-xs leading-4 leading-6 text-white opacity-90">
+          <span className="absolute right-[2rem] top-[2.6rem] block h-4 w-4 rounded-full bg-red-500 text-center text-xs leading-4 text-white opacity-90">
             {cartItems.length}
           </span>
         )}
